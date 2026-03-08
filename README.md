@@ -24,32 +24,10 @@ Before using the interface, make sure your mod meets the following:
 
 During the data stage, Electric Tiles registers a global table called `ElectricTilesDataInterface`. This table exposes the following methods:
 
-<table width="100%">
-  <thead>
-    <tr>
-      <th width="35%">Method</th>
-      <th width="65%">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>adaptTilePrototype(data)</code></td>
-      <td>Creates electric variants from tile/item/recipe prototypes.</td>
-    </tr>
-    <tr>
-      <td><code>getItemPrefix()</code></td>
-      <td>Returns the prefix applied to all generated item names.</td>
-    </tr>
-    <tr>
-      <td><code>getTilePrefix()</code></td>
-      <td>Returns the prefix applied to all generated tile names.</td>
-    </tr>
-    <tr>
-      <td><code>getInterfaceVersion()</code></td>
-      <td>Returns the current interface version string.</td>
-    </tr>
-  </tbody>
-</table>
+- **`adaptTilePrototype(data)`** — Creates electric variants from tile/item/recipe prototypes.
+- **`getItemPrefix()`** — Returns the prefix applied to all generated item names.
+- **`getTilePrefix()`** — Returns the prefix applied to all generated tile names.
+- **`getInterfaceVersion()`** — Returns the current interface version string.
 
 The core method is `adaptTilePrototype()`. It accepts an array of entries, where each entry describes a tile variant to create. Electric Tiles will process each entry, apply defaults and overrides, and register the resulting prototypes automatically.
 
@@ -82,78 +60,21 @@ The tile data for the electric variant. This should mirror a standard [TileProto
 
 **Assumed defaults** — you can omit these and Electric Tiles will fill them in:
 
-<table width="100%">
-  <thead>
-    <tr>
-      <th width="35%">Property</th>
-      <th width="65%">Default value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>type</code></td>
-      <td><code>"tile"</code></td>
-    </tr>
-    <tr>
-      <td><code>order</code></td>
-      <td><code>"a[base]"</code></td>
-    </tr>
-    <tr>
-      <td><code>minable</code></td>
-      <td><em>[TODO: describe what the default MinableStructure looks like]</em></td>
-    </tr>
-    <tr>
-      <td><code>localised_name</code></td>
-      <td>Read from your locale files</td>
-    </tr>
-  </tbody>
-</table>
+- **`type`** — defaults to `"tile"`
+- **`order`** — defaults to `"a[base]"`
+- **`minable`** — defaults to _[TODO: describe what the default MinableStructure looks like]_
+- **`localised_name`** — read from your locale files
 
 **Overwritten properties** — Electric Tiles will always set these, regardless of what you pass:
 
-<table width="100%">
-  <thead>
-    <tr>
-      <th width="35%">Property</th>
-      <th width="65%">Behavior</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>minable.result</code></td>
-      <td>Set to the generated item, if item data was provided</td>
-    </tr>
-    <tr>
-      <td><code>placeable_by</code></td>
-      <td>Set to the generated item, if item data was provided</td>
-    </tr>
-  </tbody>
-</table>
+- **`minable.result`** — set to the generated item, if item data was provided
+- **`placeable_by`** — set to the generated item, if item data was provided
 
 **Modified properties** — Electric Tiles adjusts these while preserving your input as a base:
 
-<table width="100%">
-  <thead>
-    <tr>
-      <th width="35%">Property</th>
-      <th width="65%">Modification</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>name</code></td>
-      <td>A prefix is prepended (see <code>getTilePrefix()</code>)</td>
-    </tr>
-    <tr>
-      <td><code>order</code></td>
-      <td>A postfix is appended</td>
-    </tr>
-    <tr>
-      <td><code>localised_name</code></td>
-      <td>A postfix is appended</td>
-    </tr>
-  </tbody>
-</table>
+- **`name`** — a prefix is prepended (see `getTilePrefix()`)
+- **`order`** — a postfix is appended
+- **`localised_name`** — a postfix is appended
 
 ---
 
@@ -163,82 +84,22 @@ The item used to place the electric tile. Mirrors a standard [ItemPrototype](htt
 
 **Assumed defaults:**
 
-<table width="100%">
-  <thead>
-    <tr>
-      <th width="35%">Property</th>
-      <th width="65%">Default value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>type</code></td>
-      <td><code>"item"</code></td>
-    </tr>
-    <tr>
-      <td><code>order</code></td>
-      <td><code>"a[base]"</code></td>
-    </tr>
-    <tr>
-      <td><code>subgroup</code></td>
-      <td><code>"F077ET-terrain"</code></td>
-    </tr>
-    <tr>
-      <td><code>place_as_tile</code></td>
-      <td><em>[TODO: describe what the default PlaceAsTileStructure looks like]</em></td>
-    </tr>
-    <tr>
-      <td><code>localised_name</code></td>
-      <td>Read from your locale files</td>
-    </tr>
-  </tbody>
-</table>
+- **`type`** — defaults to `"item"`
+- **`order`** — defaults to `"a[base]"`
+- **`subgroup`** — defaults to `"F077ET-terrain"`
+- **`place_as_tile`** — defaults to _[TODO: describe what the default PlaceAsTileStructure looks like]_
+- **`localised_name`** — read from your locale files
 
 **Overwritten properties:**
 
-<table width="100%">
-  <thead>
-    <tr>
-      <th width="35%">Property</th>
-      <th width="65%">Behavior</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>place_as_tile.result</code></td>
-      <td>Set to the generated tile</td>
-    </tr>
-  </tbody>
-</table>
+- **`place_as_tile.result`** — set to the generated tile
 
 **Modified properties:**
 
-<table width="100%">
-  <thead>
-    <tr>
-      <th width="35%">Property</th>
-      <th width="65%">Modification</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>name</code></td>
-      <td>A prefix is prepended (see <code>getItemPrefix()</code>)</td>
-    </tr>
-    <tr>
-      <td><code>icon(s)</code></td>
-      <td>A copper wire overlay icon is composited on top</td>
-    </tr>
-    <tr>
-      <td><code>order</code></td>
-      <td>A postfix is appended</td>
-    </tr>
-    <tr>
-      <td><code>localised_name</code></td>
-      <td>A postfix is appended</td>
-    </tr>
-  </tbody>
-</table>
+- **`name`** — a prefix is prepended (see `getItemPrefix()`)
+- **`icon(s)`** — a copper wire overlay icon is composited on top
+- **`order`** — a postfix is appended
+- **`localised_name`** — a postfix is appended
 
 ---
 
@@ -248,57 +109,16 @@ The crafting recipe for the electric tile. Mirrors a standard [RecipePrototype](
 
 **Assumed defaults:**
 
-<table width="100%">
-  <thead>
-    <tr>
-      <th width="35%">Property</th>
-      <th width="65%">Default value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>type</code></td>
-      <td><code>"recipe"</code></td>
-    </tr>
-    <tr>
-      <td><code>enabled</code></td>
-      <td><code>false</code></td>
-    </tr>
-    <tr>
-      <td><code>auto_recycle</code></td>
-      <td><code>true</code></td>
-    </tr>
-    <tr>
-      <td><code>category</code></td>
-      <td><code>"advanced-crafting"</code></td>
-    </tr>
-    <tr>
-      <td><code>ingredients</code></td>
-      <td>1x Iron Stick, 1x Copper Cable, 1x base tile</td>
-    </tr>
-  </tbody>
-</table>
+- **`type`** — defaults to `"recipe"`
+- **`enabled`** — defaults to `false`
+- **`auto_recycle`** — defaults to `true`
+- **`category`** — defaults to `"advanced-crafting"`
+- **`ingredients`** — defaults to 1x Iron Stick, 1x Copper Cable, 1x base tile
 
 **Overwritten properties:**
 
-<table width="100%">
-  <thead>
-    <tr>
-      <th width="35%">Property</th>
-      <th width="65%">Behavior</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>name</code></td>
-      <td>Always set to the internally generated name with prefix</td>
-    </tr>
-    <tr>
-      <td><code>results</code></td>
-      <td>Always set to the generated item</td>
-    </tr>
-  </tbody>
-</table>
+- **`name`** — always set to the internally generated name with prefix
+- **`results`** — always set to the generated item
 
 No other properties are modified.
 
@@ -308,36 +128,9 @@ No other properties are modified.
 
 Optional configuration that changes how the adapter processes an entry.
 
-<table width="100%">
-  <thead>
-    <tr>
-      <th width="30%">Key</th>
-      <th width="15%">Type</th>
-      <th width="15%">Default</th>
-      <th width="40%">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>add_copper_wire_icon</code></td>
-      <td>boolean</td>
-      <td><code>true</code></td>
-      <td>Set to <code>false</code> to skip the copper wire icon overlay on the item.</td>
-    </tr>
-    <tr>
-      <td><code>result_amount</code></td>
-      <td>integer</td>
-      <td><code>1</code></td>
-      <td>Number of tiles produced per craft.</td>
-    </tr>
-    <tr>
-      <td><code>use_default_recipe</code></td>
-      <td>boolean</td>
-      <td><code>false</code></td>
-      <td>If <code>true</code> and no recipe data was passed, the default recipe will be generated automatically.</td>
-    </tr>
-  </tbody>
-</table>
+- **`add_copper_wire_icon`** _(boolean, default: `true`)_ — set to `false` to skip the copper wire icon overlay on the item.
+- **`result_amount`** _(integer, default: `1`)_ — number of tiles produced per craft.
+- **`use_default_recipe`** _(boolean, default: `false`)_ — if `true` and no recipe data was passed, the default recipe will be generated automatically.
 
 ---
 
